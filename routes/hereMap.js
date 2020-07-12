@@ -7,6 +7,8 @@ Router.use(bodyParser.json());
 
 Router.route('/sC/:category')
 .get((req,res,next) => {
+  res.set('Access-Control-Allow-Origin', 'https://yatharthvardan.github.io');
+  res.set('Access-Control-Allow-Credentials','true');
     request(
         { url: 'https://geocode.search.hereapi.com/v1/geocode?q=nirankaricolony&apiKey=Yd-fnbk9FQ9yAsp35VV5rXMlCnMVJTS4eBk2f3wIkns'},
         (error, response, body) => {
