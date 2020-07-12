@@ -39,7 +39,12 @@ app.get('/yay',(req,res) => {
   res.set('Access-Control-Allow-Origin', 'https://yatharthvardan.github.io');
   res.set('Access-Control-Allow-Credentials','true');
   res.setHeader('Content-Type','application/json')
-  res.send('Its working dammit');
+  var z = {
+    title: 'Yup It is working',
+    name: 'The world will know',
+    age:'19'
+  }
+  res.JSON(z);
 })
 app.use('/users', usersRouter);
 app.use('/hereMap',mapRouter);
