@@ -43,7 +43,7 @@ app.get('/yay',(req,res) => {
     title: 'Yup It is working',
     name: 'The world will know',
     age:'19'
-  }
+  };
   res.JSON(z);
 })
 app.use('/users', usersRouter);
