@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
 app.get('/yay',(req,res) => {
-  res.set('Access-Control-Allow-Origin', 'https://yatharthvardan.git.io');
+  res.set('Access-Control-Allow-Origin', 'https://yatharthvardan.github.io');
   res.set('Access-Control-Allow-Credentials','true');
   res.send('Its working dammit');
 })
