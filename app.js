@@ -44,6 +44,7 @@ app.get('/yay',(req,res) => {
     name: 'The world will know',
     age:'19'
   };
+  res.statusCode = 200;
   res.JSON(z);
 })
 app.use('/users', usersRouter);
