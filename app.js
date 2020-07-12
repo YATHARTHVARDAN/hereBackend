@@ -38,6 +38,7 @@ app.use(passport.initialize());
 app.get('/yay',(req,res) => {
   res.set('Access-Control-Allow-Origin', 'https://yatharthvardan.github.io');
   res.set('Access-Control-Allow-Credentials','true');
+  res.setHeader('Content-Type','application/json')
   res.send('Its working dammit');
 })
 app.use('/users', usersRouter);
