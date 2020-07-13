@@ -5,7 +5,7 @@ const request = require('request');
 
 Router.use(bodyParser.json());
 
-Router.route('/sC/:place')
+Router.route('/sP/:place')
 .get((req,res,next) => {
   res.set('Access-Control-Allow-Origin', 'https://yatharthvardan.github.io');
   res.set('Access-Control-Allow-Credentials','true');
