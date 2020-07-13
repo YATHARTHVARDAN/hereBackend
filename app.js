@@ -8,7 +8,8 @@ var passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var mapRouter = require('./routes/hereMap');
+var placeRouter = require('./routes/searchPlace');
+var categoryRouter = require('./routes/searchCategory');
 const config = require('./config');
 const mongoose = require('mongoose');
 
@@ -35,19 +36,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
-app.get('/yay',(req,res) => {
-  res.set('Access-Control-Allow-Origin', 'https://yatharthvardan.github.io');
-  res.set('Access-Control-Allow-Credentials','true');
-  res.setHeader('Content-Type','application/json')
-  var z = {
-    title: 'Yup It is working',
-    name: 'The world will know',
-    age:'19'
-  };
-  res.statusCode = 200;
-  res.JSON(z);
-})
 app.use('/users', usersRouter);
-app.use('/hereMap',mapRouter);
+app.use('/searchPlace',placeRouter);
+app.use('/searchCategory',categoryRouter);
 
 module.exports = app;
