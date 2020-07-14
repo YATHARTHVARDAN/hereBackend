@@ -6,15 +6,16 @@ const config = require('../config');
 
 Router.use(bodyParser.json());
 
-Router.route('/:category')
-.get((req,res,next) => {
-  res.set('Access-Control-Allow-Origin', 'https://yatharthvardan.github.io');
+Router.route('/')
+.post((req,res,next) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.set('Access-Control-Allow-Credentials','true');
     request(
-        { url: 'https://discover.search.hereapi.com/v1/discover?incircle:'+req.lat+','+req.lng+';r='+req.radius+'&q='+req.params.category+'&apiKey='+config.apiKey},
-        (error, response, body) => {
-          if (error || response.statusCode !== 200) {
-            return res.status(500).json({ type: 'error', message: err.message });
+        { url: 'https://discover.search.hereapi.com/v1/discover?in=circle:'+req.body.lat+','+req.body.lng+';r='+req.body.radius+'&q='+req.body.category+'&apiKey='+config.apiKey},
+        (er, response, body) => {
+          if (er || response.statusCode !== 200) {
+              console.log('Error from the apis' + er);
+            return res.status(response.statusCode).json({ type: 'error', message: er });
           }
           res.statusCode = 200;
           res.setHeader('Content-Type','application/json');

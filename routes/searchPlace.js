@@ -6,9 +6,9 @@ const config = require('../config');
 
 Router.use(bodyParser.json());
 
-Router.route('/sP/:place')
+Router.route('/:place')
 .get((req,res,next) => {
-  res.set('Access-Control-Allow-Origin', 'https://yatharthvardan.github.io');
+  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.set('Access-Control-Allow-Credentials','true');
     request(
         { url: 'https://geocode.search.hereapi.com/v1/geocode?q=' + req.params.place + '&apiKey='+config.apiKey},
@@ -20,5 +20,4 @@ Router.route('/sP/:place')
         }
       )
 });
-
 module.exports = Router;
