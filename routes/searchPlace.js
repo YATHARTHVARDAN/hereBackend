@@ -6,12 +6,12 @@ const config = require('../config');
 
 Router.use(bodyParser.json());
 
-Router.route('/:place')
-.get((req,res,next) => {
+Router.route('/')
+.post((req,res,next) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.set('Access-Control-Allow-Credentials','true');
     request(
-        { url: 'https://geocode.search.hereapi.com/v1/geocode?q=' + req.params.place + '&apiKey='+config.apiKey},
+        { url: 'https://geocode.search.hereapi.com/v1/geocode?q=' + req.body.place + '&apiKey='+config.apiKey},
         (error, response, body) => {
           if (error || response.statusCode !== 200) {
             return res.status(500).json({ type: 'error', message: err.message });
